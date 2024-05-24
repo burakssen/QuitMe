@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA38FE7C2C0121C400EF5375 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38FE7B2C0121C400EF5375 /* AppDelegate.swift */; };
 		EA6CAF8B2C00CC5900856697 /* QuitMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAF8A2C00CC5900856697 /* QuitMeApp.swift */; };
-		EA6CAF8D2C00CC5900856697 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAF8C2C00CC5900856697 /* ContentView.swift */; };
 		EA6CAF8F2C00CC5A00856697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6CAF8E2C00CC5A00856697 /* Assets.xcassets */; };
 		EA6CAF922C00CC5A00856697 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6CAF912C00CC5A00856697 /* Preview Assets.xcassets */; };
 		EA6CAF9D2C00CC5A00856697 /* QuitMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAF9C2C00CC5A00856697 /* QuitMeTests.swift */; };
 		EA6CAFA72C00CC5A00856697 /* QuitMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAFA62C00CC5A00856697 /* QuitMeUITests.swift */; };
 		EA6CAFA92C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAFA82C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift */; };
+		EA6CAFB62C00CCE300856697 /* AppMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAFB52C00CCE300856697 /* AppMenuView.swift */; };
+		EAF1119E2C015D1F003DB248 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1119D2C015D1F003DB248 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA38FE7B2C0121C400EF5375 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA6CAF872C00CC5900856697 /* QuitMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuitMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6CAF8A2C00CC5900856697 /* QuitMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitMeApp.swift; sourceTree = "<group>"; };
-		EA6CAF8C2C00CC5900856697 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EA6CAF8E2C00CC5A00856697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA6CAF912C00CC5A00856697 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EA6CAF932C00CC5A00856697 /* QuitMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuitMe.entitlements; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		EA6CAFA22C00CC5A00856697 /* QuitMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuitMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6CAFA62C00CC5A00856697 /* QuitMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitMeUITests.swift; sourceTree = "<group>"; };
 		EA6CAFA82C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitMeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EA6CAFB52C00CCE300856697 /* AppMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenuView.swift; sourceTree = "<group>"; };
+		EAF1119D2C015D1F003DB248 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,10 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				EA6CAF8A2C00CC5900856697 /* QuitMeApp.swift */,
-				EA6CAF8C2C00CC5900856697 /* ContentView.swift */,
 				EA6CAF8E2C00CC5A00856697 /* Assets.xcassets */,
 				EA6CAF932C00CC5A00856697 /* QuitMe.entitlements */,
 				EA6CAF902C00CC5A00856697 /* Preview Content */,
+				EA6CAFB52C00CCE300856697 /* AppMenuView.swift */,
+				EA38FE7B2C0121C400EF5375 /* AppDelegate.swift */,
+				EAF1119D2C015D1F003DB248 /* SettingsView.swift */,
 			);
 			path = QuitMe;
 			sourceTree = "<group>";
@@ -259,7 +265,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA6CAF8D2C00CC5900856697 /* ContentView.swift in Sources */,
+				EA38FE7C2C0121C400EF5375 /* AppDelegate.swift in Sources */,
+				EAF1119E2C015D1F003DB248 /* SettingsView.swift in Sources */,
+				EA6CAFB62C00CCE300856697 /* AppMenuView.swift in Sources */,
 				EA6CAF8B2C00CC5900856697 /* QuitMeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,13 +428,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = QuitMe/QuitMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"QuitMe/Preview Content\"";
+				DEVELOPMENT_TEAM = 66Z4557953;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = QuitMe;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -445,13 +459,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = QuitMe/QuitMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"QuitMe/Preview Content\"";
+				DEVELOPMENT_TEAM = 66Z4557953;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = QuitMe;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

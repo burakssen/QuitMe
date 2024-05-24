@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct QuitMeApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra {
+            AppMenuView().environmentObject(appDelegate)
+        } label: {
+            Image(systemName: "q.circle.fill")
         }
+        .menuBarExtraStyle(.window)
     }
 }
+
