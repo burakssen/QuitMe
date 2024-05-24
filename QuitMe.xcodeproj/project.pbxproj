@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EA6CAF8B2C00CC5900856697 /* QuitMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAF8A2C00CC5900856697 /* QuitMeApp.swift */; };
+		EA6CAF8D2C00CC5900856697 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAF8C2C00CC5900856697 /* ContentView.swift */; };
+		EA6CAF8F2C00CC5A00856697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6CAF8E2C00CC5A00856697 /* Assets.xcassets */; };
+		EA6CAF922C00CC5A00856697 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6CAF912C00CC5A00856697 /* Preview Assets.xcassets */; };
+		EA6CAF9D2C00CC5A00856697 /* QuitMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAF9C2C00CC5A00856697 /* QuitMeTests.swift */; };
+		EA6CAFA72C00CC5A00856697 /* QuitMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAFA62C00CC5A00856697 /* QuitMeUITests.swift */; };
+		EA6CAFA92C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAFA82C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA6CAF992C00CC5A00856697 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA6CAF7F2C00CC5900856697 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA6CAF862C00CC5900856697;
+			remoteInfo = QuitMe;
+		};
+		EA6CAFA32C00CC5A00856697 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA6CAF7F2C00CC5900856697 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA6CAF862C00CC5900856697;
+			remoteInfo = QuitMe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EA6CAF872C00CC5900856697 /* QuitMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuitMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA6CAF8A2C00CC5900856697 /* QuitMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitMeApp.swift; sourceTree = "<group>"; };
+		EA6CAF8C2C00CC5900856697 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EA6CAF8E2C00CC5A00856697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EA6CAF912C00CC5A00856697 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EA6CAF932C00CC5A00856697 /* QuitMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuitMe.entitlements; sourceTree = "<group>"; };
+		EA6CAF982C00CC5A00856697 /* QuitMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuitMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA6CAF9C2C00CC5A00856697 /* QuitMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitMeTests.swift; sourceTree = "<group>"; };
+		EA6CAFA22C00CC5A00856697 /* QuitMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuitMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA6CAFA62C00CC5A00856697 /* QuitMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitMeUITests.swift; sourceTree = "<group>"; };
+		EA6CAFA82C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitMeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA6CAF842C00CC5900856697 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA6CAF952C00CC5A00856697 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA6CAF9F2C00CC5A00856697 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EA6CAF7E2C00CC5900856697 = {
+			isa = PBXGroup;
+			children = (
+				EA6CAF892C00CC5900856697 /* QuitMe */,
+				EA6CAF9B2C00CC5A00856697 /* QuitMeTests */,
+				EA6CAFA52C00CC5A00856697 /* QuitMeUITests */,
+				EA6CAF882C00CC5900856697 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EA6CAF882C00CC5900856697 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA6CAF872C00CC5900856697 /* QuitMe.app */,
+				EA6CAF982C00CC5A00856697 /* QuitMeTests.xctest */,
+				EA6CAFA22C00CC5A00856697 /* QuitMeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA6CAF892C00CC5900856697 /* QuitMe */ = {
+			isa = PBXGroup;
+			children = (
+				EA6CAF8A2C00CC5900856697 /* QuitMeApp.swift */,
+				EA6CAF8C2C00CC5900856697 /* ContentView.swift */,
+				EA6CAF8E2C00CC5A00856697 /* Assets.xcassets */,
+				EA6CAF932C00CC5A00856697 /* QuitMe.entitlements */,
+				EA6CAF902C00CC5A00856697 /* Preview Content */,
+			);
+			path = QuitMe;
+			sourceTree = "<group>";
+		};
+		EA6CAF902C00CC5A00856697 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EA6CAF912C00CC5A00856697 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EA6CAF9B2C00CC5A00856697 /* QuitMeTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA6CAF9C2C00CC5A00856697 /* QuitMeTests.swift */,
+			);
+			path = QuitMeTests;
+			sourceTree = "<group>";
+		};
+		EA6CAFA52C00CC5A00856697 /* QuitMeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EA6CAFA62C00CC5A00856697 /* QuitMeUITests.swift */,
+				EA6CAFA82C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift */,
+			);
+			path = QuitMeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA6CAF862C00CC5900856697 /* QuitMe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA6CAFAC2C00CC5A00856697 /* Build configuration list for PBXNativeTarget "QuitMe" */;
+			buildPhases = (
+				EA6CAF832C00CC5900856697 /* Sources */,
+				EA6CAF842C00CC5900856697 /* Frameworks */,
+				EA6CAF852C00CC5900856697 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuitMe;
+			productName = QuitMe;
+			productReference = EA6CAF872C00CC5900856697 /* QuitMe.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EA6CAF972C00CC5A00856697 /* QuitMeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA6CAFAF2C00CC5A00856697 /* Build configuration list for PBXNativeTarget "QuitMeTests" */;
+			buildPhases = (
+				EA6CAF942C00CC5A00856697 /* Sources */,
+				EA6CAF952C00CC5A00856697 /* Frameworks */,
+				EA6CAF962C00CC5A00856697 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA6CAF9A2C00CC5A00856697 /* PBXTargetDependency */,
+			);
+			name = QuitMeTests;
+			productName = QuitMeTests;
+			productReference = EA6CAF982C00CC5A00856697 /* QuitMeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EA6CAFA12C00CC5A00856697 /* QuitMeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA6CAFB22C00CC5A00856697 /* Build configuration list for PBXNativeTarget "QuitMeUITests" */;
+			buildPhases = (
+				EA6CAF9E2C00CC5A00856697 /* Sources */,
+				EA6CAF9F2C00CC5A00856697 /* Frameworks */,
+				EA6CAFA02C00CC5A00856697 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA6CAFA42C00CC5A00856697 /* PBXTargetDependency */,
+			);
+			name = QuitMeUITests;
+			productName = QuitMeUITests;
+			productReference = EA6CAFA22C00CC5A00856697 /* QuitMeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA6CAF7F2C00CC5900856697 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					EA6CAF862C00CC5900856697 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					EA6CAF972C00CC5A00856697 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = EA6CAF862C00CC5900856697;
+					};
+					EA6CAFA12C00CC5A00856697 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = EA6CAF862C00CC5900856697;
+					};
+				};
+			};
+			buildConfigurationList = EA6CAF822C00CC5900856697 /* Build configuration list for PBXProject "QuitMe" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EA6CAF7E2C00CC5900856697;
+			productRefGroup = EA6CAF882C00CC5900856697 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA6CAF862C00CC5900856697 /* QuitMe */,
+				EA6CAF972C00CC5A00856697 /* QuitMeTests */,
+				EA6CAFA12C00CC5A00856697 /* QuitMeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA6CAF852C00CC5900856697 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA6CAF922C00CC5A00856697 /* Preview Assets.xcassets in Resources */,
+				EA6CAF8F2C00CC5A00856697 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA6CAF962C00CC5A00856697 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA6CAFA02C00CC5A00856697 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA6CAF832C00CC5900856697 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA6CAF8D2C00CC5900856697 /* ContentView.swift in Sources */,
+				EA6CAF8B2C00CC5900856697 /* QuitMeApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA6CAF942C00CC5A00856697 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA6CAF9D2C00CC5A00856697 /* QuitMeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA6CAF9E2C00CC5A00856697 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA6CAFA72C00CC5A00856697 /* QuitMeUITests.swift in Sources */,
+				EA6CAFA92C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA6CAF9A2C00CC5A00856697 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA6CAF862C00CC5900856697 /* QuitMe */;
+			targetProxy = EA6CAF992C00CC5A00856697 /* PBXContainerItemProxy */;
+		};
+		EA6CAFA42C00CC5A00856697 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA6CAF862C00CC5900856697 /* QuitMe */;
+			targetProxy = EA6CAFA32C00CC5A00856697 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EA6CAFAA2C00CC5A00856697 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EA6CAFAB2C00CC5A00856697 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		EA6CAFAD2C00CC5A00856697 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QuitMe/QuitMe.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"QuitMe/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burakssen.com.QuitMe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EA6CAFAE2C00CC5A00856697 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QuitMe/QuitMe.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"QuitMe/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burakssen.com.QuitMe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EA6CAFB02C00CC5A00856697 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burakssen.com.QuitMeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuitMe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuitMe";
+			};
+			name = Debug;
+		};
+		EA6CAFB12C00CC5A00856697 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burakssen.com.QuitMeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuitMe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/QuitMe";
+			};
+			name = Release;
+		};
+		EA6CAFB32C00CC5A00856697 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burakssen.com.QuitMeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = QuitMe;
+			};
+			name = Debug;
+		};
+		EA6CAFB42C00CC5A00856697 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.burakssen.com.QuitMeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = QuitMe;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA6CAF822C00CC5900856697 /* Build configuration list for PBXProject "QuitMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA6CAFAA2C00CC5A00856697 /* Debug */,
+				EA6CAFAB2C00CC5A00856697 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA6CAFAC2C00CC5A00856697 /* Build configuration list for PBXNativeTarget "QuitMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA6CAFAD2C00CC5A00856697 /* Debug */,
+				EA6CAFAE2C00CC5A00856697 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA6CAFAF2C00CC5A00856697 /* Build configuration list for PBXNativeTarget "QuitMeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA6CAFB02C00CC5A00856697 /* Debug */,
+				EA6CAFB12C00CC5A00856697 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA6CAFB22C00CC5A00856697 /* Build configuration list for PBXNativeTarget "QuitMeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA6CAFB32C00CC5A00856697 /* Debug */,
+				EA6CAFB42C00CC5A00856697 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA6CAF7F2C00CC5900856697 /* Project object */;
+}
