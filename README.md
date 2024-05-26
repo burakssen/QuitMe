@@ -22,6 +22,12 @@ There is also ignore list that you can add applications to. These applications w
 
 If you want the application to start at login, you can check the `Launch at Login` checkbox as well.
 
+<p align="center">
+    <img src="images/app_menu_icon.png">
+</p>
+
+`You can find the application in the menu bar. Click on the icon to show the application window.`
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
