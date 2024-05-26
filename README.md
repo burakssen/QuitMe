@@ -6,6 +6,20 @@
 
 QuitMe is a simple application that allows you to quit any application on macOS. It is a simple wrapper around the `kill` command.
 
+## Development
+
+- [x] Launch at Login (with [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) library)
+- [x] Quit selected applications
+- [x] Ignore list
+- [ ] Shortcut for quitting applications
+- [ ] Quit/Force Quit option for applications
+- [ ] Sound notification when quitting applications
+- [ ] Show background processes as well
+- [ ] Default quit option for applications
+- [ ] Support for multiple languages
+- [ ] Quit unused applications automatically after a certain period of time (add user confirmation before quitting this is optional)
+- [ ] Maybe make a separate settings window instead of using a popover
+
 ## Installation
 
 You can download the latest version of QuitMe from the [releases page]()
