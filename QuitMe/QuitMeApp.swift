@@ -14,10 +14,12 @@ struct QuitMeApp: App {
     var body: some Scene {
         MenuBarExtra {
             AppMenuView().environmentObject(appDelegate)
+                .modelContainer(for: IgnoredItem.self)
         } label: {
-            Image(systemName: "q.circle.fill")
+            Image(systemName: "q.square")
         }
         .menuBarExtraStyle(.window)
+        .modelContainer(for: IgnoredItem.self)
     }
 }
 

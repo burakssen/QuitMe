@@ -7,12 +7,26 @@
 
 import AppKit
 import SwiftUI
+import SwiftData
 
-struct MenuItem: Hashable {
-    var item: NSRunningApplication
-    var checked: Bool
+@Model
+class IgnoredItem {
+    @Attribute(.unique) var id: String
+    var createdAt: Date
+    
+    init(id: String) {
+        self.id = id
+        self.createdAt = Date.now
+    }
+}
+
+struct MenuItem: Hashable, Identifiable {
+    public var id: String
+    public var item: NSRunningApplication
+    public var checked: Bool
     
     init(item: NSRunningApplication, checked: Bool) {
+        self.id = item.bundleIdentifier ?? "Unknown"
         self.item = item
         self.checked = checked
     }
@@ -68,16 +82,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     public func fetch(){
         let workspace = NSWorkspace.shared
         let runningApps = workspace.runningApplications
-                
+    
         for app in runningApps.filter({ $0.activationPolicy == .regular }) {
             if let bident = app.bundleIdentifier {
-                if bident.contains("finder") {
-                    continue
-                }
                 let menuItem = MenuItem(item: app, checked: false)
                 menuItems.append(menuItem)
                 checkedItems[menuItem] = false
-
             }
         }
     }

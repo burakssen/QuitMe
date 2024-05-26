@@ -16,6 +16,7 @@
 		EA6CAFA92C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAFA82C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift */; };
 		EA6CAFB62C00CCE300856697 /* AppMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAFB52C00CCE300856697 /* AppMenuView.swift */; };
 		EAF1119E2C015D1F003DB248 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1119D2C015D1F003DB248 /* SettingsView.swift */; };
+		EAF265E22C0212590009269C /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = EAF265E12C0212590009269C /* LaunchAtLogin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAF265E22C0212590009269C /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +153,9 @@
 			dependencies = (
 			);
 			name = QuitMe;
+			packageProductDependencies = (
+				EAF265E12C0212590009269C /* LaunchAtLogin */,
+			);
 			productName = QuitMe;
 			productReference = EA6CAF872C00CC5900856697 /* QuitMe.app */;
 			productType = "com.apple.product-type.application";
@@ -223,6 +228,9 @@
 				Base,
 			);
 			mainGroup = EA6CAF7E2C00CC5900856697;
+			packageReferences = (
+				EAF265E02C0212590009269C /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+			);
 			productRefGroup = EA6CAF882C00CC5900856697 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -593,6 +601,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EAF265E02C0212590009269C /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EAF265E12C0212590009269C /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAF265E02C0212590009269C /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EA6CAF7F2C00CC5900856697 /* Project object */;
 }
