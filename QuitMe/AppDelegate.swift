@@ -40,6 +40,8 @@ struct MenuItem: Hashable, Identifiable {
 final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     @Published var menuItems: [MenuItem] = []
     @Published var checkedItems: [MenuItem: Bool] = [:]
+    private var fetchTimer: Timer?
+    private let center = NSWorkspace.shared.notificationCenter
     
     public var selectedItems: [MenuItem] {
         var selected: [MenuItem] = []
@@ -52,50 +54,59 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     }
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        let center = NSWorkspace.shared.notificationCenter
-        center.addObserver(
-            forName: NSWorkspace.didLaunchApplicationNotification,
-            object: nil, // always NSWorkspace
-            queue: OperationQueue.main) { (notification: Notification) in
-                if let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication {
-                    if ((app.bundleIdentifier?.contains("finder")) != nil) {
-                        self.menuItems.append(MenuItem(item:app, checked: false))
-                    }
-            }
-        }
-        
-        center.addObserver(
-            forName: NSWorkspace.didTerminateApplicationNotification,
-            object: nil, // always NSWorkspace
-            queue: OperationQueue.main) { (notification: Notification) in
-                if let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication {
-                
-                    self.menuItems = self.menuItems.filter { menuItems in
-                        app.bundleIdentifier != menuItems.item.bundleIdentifier
-                    }
-            }
-        }
-        
         self.fetch()
+        fetchTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
+            self.fetch()
+        }
+        
+        self.addObserver(notificationName: NSWorkspace.didLaunchApplicationNotification, self.launchObserver)
+        self.addObserver(notificationName: NSWorkspace.didTerminateApplicationNotification, self.terminateObserver)
+    }
+    
+    func applicationWillTerminate(_ notification: Notification) {
+        fetchTimer?.invalidate()
+        fetchTimer = nil
     }
     
     public func fetch(){
         let workspace = NSWorkspace.shared
         let runningApps = workspace.runningApplications
-    
-        for app in runningApps.filter({ $0.activationPolicy == .regular }) {
-            if let bident = app.bundleIdentifier {
-                let menuItem = MenuItem(item: app, checked: false)
-                menuItems.append(menuItem)
-                checkedItems[menuItem] = false
-            }
-        }
+        let apps = runningApps.filter({ $0.activationPolicy == .regular })
+        let runningAppIdentifiers = Set(apps.compactMap({ $0.bundleIdentifier }))
+        menuItems.removeAll(where: { !runningAppIdentifiers.contains($0.id) })
+        let newApps = apps.filter({ app in !menuItems.contains(where: { app.bundleIdentifier == $0.id }) })
+        menuItems.append(contentsOf: newApps.map({ MenuItem(item: $0, checked: false) }))
     }
     
     public func MenuItemBinding(for menuItem: MenuItem) -> Binding<Bool> {
         return Binding(
             get: { self.checkedItems[menuItem] ?? false },
             set: { self.checkedItems[menuItem] = $0 }
+        )
+    }
+    
+    func launchObserver(notification: Notification) {
+        if let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication {
+            if ((app.bundleIdentifier?.contains("finder")) != nil && self.menuItems.filter({$0.id == app.bundleIdentifier}).count <= 0) {
+                self.menuItems.append(MenuItem(item:app, checked: false))
+            }
+        }
+    }
+    
+    func terminateObserver(notification: Notification){
+        if let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication {
+            self.menuItems = self.menuItems.filter { menuItems in
+                app.bundleIdentifier != menuItems.item.bundleIdentifier
+            }
+        }
+    }
+    
+    func addObserver(notificationName: NSNotification.Name, _ observer: @escaping (Notification) -> Void){
+        self.center.addObserver(
+            forName: notificationName,
+            object: nil,
+            queue: OperationQueue.main,
+            using: observer
         )
     }
 }
