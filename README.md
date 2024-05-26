@@ -1,5 +1,9 @@
 # QuitMe
 
+<p align="center">
+    <img src="images/icon.png">
+</p>
+
 QuitMe is a simple application that allows you to quit any application on macOS. It is a simple wrapper around the `kill` command.
 
 ## Installation
