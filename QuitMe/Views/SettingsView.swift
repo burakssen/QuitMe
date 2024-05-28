@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import LaunchAtLogin
+import KeyboardShortcuts
 
 struct PreferencesView: View {
     @EnvironmentObject var appDelegate: AppDelegate
@@ -53,6 +54,12 @@ struct PreferencesView: View {
                 
             }
             .frame(maxWidth: .infinity)
+            Divider()
+            Text("Shortcuts")
+            Form {
+                KeyboardShortcuts.Recorder("Quit All", name: .quitMode)
+                KeyboardShortcuts.Recorder("Force Quit All", name: .forceQuitMode)
+            }.frame(alignment: .leading)
             Divider()
             LaunchAtLogin.Toggle {
                 Text("Launch At Login 🚀")

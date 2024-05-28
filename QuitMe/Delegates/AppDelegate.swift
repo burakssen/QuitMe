@@ -8,6 +8,7 @@
 import AppKit
 import SwiftUI
 import SwiftData
+import KeyboardShortcuts
 
 @Model
 class IgnoredItem {
@@ -61,6 +62,32 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         
         self.addObserver(notificationName: NSWorkspace.didLaunchApplicationNotification, self.launchObserver)
         self.addObserver(notificationName: NSWorkspace.didTerminateApplicationNotification, self.terminateObserver)
+        
+        KeyboardShortcuts.onKeyUp(for: .quitMode) {
+            let items = self.getNonIgnoredItems()
+            self.runWithAlert(
+                items: items,
+                message: "Quit Applications",
+                info: "Are you sure you want to quit the selected applications?"
+            ) { items in
+                for item in items {
+                    item.item.terminate()
+                }
+            }
+        }
+        
+        KeyboardShortcuts.onKeyDown(for: .forceQuitMode) {
+            let items = self.getNonIgnoredItems()
+            self.runWithAlert(
+                items: items,
+                message: "Force Quit Applications",
+                info: "Are you sure you want to force quit the selected applications?"
+            ) { items in
+                for item in items {
+                    item.item.forceTerminate()
+                }
+            }
+        }
     }
     
     func applicationWillTerminate(_ notification: Notification) {
@@ -108,5 +135,39 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
             queue: OperationQueue.main,
             using: observer
         )
+    }
+    
+    private func getNonIgnoredItems() -> [MenuItem] {
+        do {
+            let container = try ModelContainer(for: IgnoredItem.self)
+            let context = ModelContext(container)
+            let fetchDescriptor = FetchDescriptor<IgnoredItem>()
+            let ignoredItems = try context.fetch(fetchDescriptor) as [IgnoredItem]
+            
+            let items = self.menuItems.filter { mItem in
+                !ignoredItems.contains { iItem in
+                    iItem.id == mItem.id
+                }
+            }
+            return items
+        }
+        catch {
+            print("\(error)")
+        }
+        return []
+    }
+    
+    private func runWithAlert(items: [MenuItem], message: String, info: String, action: ([MenuItem]) -> ()) {
+        if !items.isEmpty {
+            let alert = NSAlert()
+            alert.messageText = message
+            alert.informativeText = info
+            alert.addButton(withTitle: "Quit")
+            alert.addButton(withTitle: "Cancel")
+                
+            if alert.runModal() == .alertFirstButtonReturn {
+                action(items)
+            }
+        }
     }
 }
