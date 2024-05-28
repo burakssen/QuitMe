@@ -9,8 +9,7 @@ import SwiftUI
 import SwiftData
 import LaunchAtLogin
 
-
-struct SettingsView: View {
+struct PreferencesView: View {
     @EnvironmentObject var appDelegate: AppDelegate
     @Environment(\.modelContext) var modelContext
     @Query(sort: \IgnoredItem.id) var ignoredItems: [IgnoredItem]
@@ -25,15 +24,7 @@ struct SettingsView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Button(action: {
-                NSApplication.shared.terminate(nil)
-            }, label: {
-                Image(systemName: "xmark.circle.fill")
-                Text("Quit")
-            })
-            .controlSize(.large)
-            .buttonStyle(.borderless)
-            .buttonBorderShape(.buttonBorder)
+            Text("Preferences")
             Divider()
             Text("Ignored Apps")
             ForEach(ignoredItemList){ ignoredItem in
@@ -61,16 +52,15 @@ struct SettingsView: View {
                 }
                 
             }
+            .frame(maxWidth: .infinity)
             Divider()
-                .frame(maxWidth: .infinity)
             LaunchAtLogin.Toggle {
                 Text("Launch At Login 🚀")
             }
         }.padding(.all)
-            .frame(width: 200)
     }
 }
 
 #Preview {
-    SettingsView().modelContainer(for: IgnoredItem.self)
+    PreferencesView().modelContainer(for: IgnoredItem.self)
 }

@@ -16,11 +16,12 @@ struct AppMenuView: View {
     
     @Query(sort: \IgnoredItem.id) var ignoredItems: [IgnoredItem]
     @Environment(\.modelContext) var modelContext
-    
+    @Environment(\.openWindow) private var openWindow
+
     var filteredMenuItems: [MenuItem] {
         appDelegate.menuItems.filter { menuItem in
             !ignoredItems.contains(where: { $0.id == menuItem.id })
-        }
+        } 
     }
     
     var body: some View {
@@ -41,11 +42,10 @@ struct AppMenuView: View {
                 })
                 .buttonStyle(.borderless)
                 .imageScale(.large)
-                .popover(isPresented: self.$settingsPopover, arrowEdge: .trailing){
-                    SettingsView()
-                        .environmentObject(appDelegate)
-                        .modelContainer(for: IgnoredItem.self)
-                        .modelContext(self.modelContext)
+                .popover(isPresented: self.$settingsPopover, arrowEdge: .bottom){
+                    PopoverView()
+                        .frame(width: 250)
+                        .padding(.all, 0)
                 }
             }
             .frame(maxWidth: .infinity)
