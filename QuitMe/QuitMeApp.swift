@@ -29,5 +29,8 @@ struct QuitMeApp: App {
                 .modelContainer(for: IgnoredItem.self)
                 .frame(maxWidth: 300)
         }.windowResizability(.contentSize)
+        WindowGroup(id: "help") {
+            HelpView()
+        }.windowResizability(.contentSize)
     }
 }

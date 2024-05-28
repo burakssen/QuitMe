@@ -15,7 +15,7 @@ struct PopoverView: View {
         [
             ("xmark.circle.fill", "Quit", {}),
             ("gearshape", "Preferences", {self.openWindow(id: "preferences")}),
-            ("questionmark.circle", "Help", {})
+            ("questionmark.circle", "Help", {self.openWindow(id: "help")})
         ]
     }
     

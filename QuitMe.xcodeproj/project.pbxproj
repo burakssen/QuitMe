@@ -11,6 +11,7 @@
 		EA3A63172C040449000BDB93 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = EA3A63162C040449000BDB93 /* KeyboardShortcuts */; };
 		EA3A63192C04046F000BDB93 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A63182C04046F000BDB93 /* Constants.swift */; };
 		EA3A631D2C0407E9000BDB93 /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A631C2C0407E9000BDB93 /* PopoverView.swift */; };
+		EA62EE982C0670A600CDEF4C /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62EE972C0670A600CDEF4C /* HelpView.swift */; };
 		EA6CAF8B2C00CC5900856697 /* QuitMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAF8A2C00CC5900856697 /* QuitMeApp.swift */; };
 		EA6CAF8F2C00CC5A00856697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6CAF8E2C00CC5A00856697 /* Assets.xcassets */; };
 		EA6CAF922C00CC5A00856697 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6CAF912C00CC5A00856697 /* Preview Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		EA38FE7B2C0121C400EF5375 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA3A63182C04046F000BDB93 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EA3A631C2C0407E9000BDB93 /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
+		EA62EE972C0670A600CDEF4C /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		EA6CAF872C00CC5900856697 /* QuitMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuitMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6CAF8A2C00CC5900856697 /* QuitMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitMeApp.swift; sourceTree = "<group>"; };
 		EA6CAF8E2C00CC5A00856697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				EA6CAFB52C00CCE300856697 /* AppMenuView.swift */,
 				EAF1119D2C015D1F003DB248 /* SettingsView.swift */,
 				EA3A631C2C0407E9000BDB93 /* PopoverView.swift */,
+				EA62EE972C0670A600CDEF4C /* HelpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				EA3A631D2C0407E9000BDB93 /* PopoverView.swift in Sources */,
 				EA3A63192C04046F000BDB93 /* Constants.swift in Sources */,
 				EA38FE7C2C0121C400EF5375 /* AppDelegate.swift in Sources */,
+				EA62EE982C0670A600CDEF4C /* HelpView.swift in Sources */,
 				EAF1119E2C015D1F003DB248 /* SettingsView.swift in Sources */,
 				EA6CAFB62C00CCE300856697 /* AppMenuView.swift in Sources */,
 				EA6CAF8B2C00CC5900856697 /* QuitMeApp.swift in Sources */,
