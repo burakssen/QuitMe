@@ -16,58 +16,136 @@ struct PreferencesView: View {
     @Query(sort: \IgnoredItem.id) var ignoredItems: [IgnoredItem]
     
     var ignoredItemList: [MenuItem] {
-        let iItems = appDelegate.menuItems.filter { menuItem in
-            ignoredItems.contains(where: { $0.id == menuItem.id })
+        appDelegate.menuItems.filter { menuItem in
+            ignoredItems.contains { $0.id == menuItem.id }
         }
-        
-        return iItems
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 20) {
             Text("Preferences")
-            Divider()
+                .font(.title2)
+                .fontWeight(.bold)
+            
+            // Scrollable Ignored Apps Section
             Text("Ignored Apps")
-            ForEach(ignoredItemList){ ignoredItem in
-                HStack{
-                    if ((ignoredItem.item.icon) != nil){
-                        Image(nsImage: ignoredItem.item.icon!)
-                    }
-                    Text(ignoredItem.item.localizedName ?? "Unknown")
-                    Spacer()
-                    Button(action: {
-                        do {
-                            let itemToDelete = ignoredItems.first(where: { $0.id == ignoredItem.id })
-                            if let itemToDelete = itemToDelete {
-                                modelContext.delete(itemToDelete)
-                                try modelContext.save()
-                            }
-                        } catch {
-                            print("Error deleting ignored item: \(error.localizedDescription)")
-                        }
-                    }, label: {
-                        Text(Image(systemName: "minus.circle.fill"))
-                    })
-                    .buttonStyle(.borderless)
-                    .imageScale(.large)
-                }
-                
+                .font(.headline)
+            ScrollView {
+                IgnoredAppsSection(ignoredItemList: ignoredItemList, ignoredItems: ignoredItems, modelContext: modelContext)
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxHeight: 500) // Adjust height as needed
+            
             Divider()
-            Text("Shortcuts")
-            Form {
-                KeyboardShortcuts.Recorder("Quit All", name: .quitMode)
-                KeyboardShortcuts.Recorder("Force Quit All", name: .forceQuitMode)
-            }.frame(alignment: .leading)
+            
+            ShortcutsSection()
+            
             Divider()
+            
             LaunchAtLogin.Toggle {
-                Text("Launch At Login 🚀")
+                Text("Launch at Login")
+                    .font(.subheadline)
             }
-        }.padding(.all)
+        }
+        .padding()
+        .frame(width: 300, height: 400)
+        .background(Color(.windowBackgroundColor))
     }
 }
 
-#Preview {
-    PreferencesView().modelContainer(for: IgnoredItem.self)
+struct IgnoredAppsSection: View {
+    let ignoredItemList: [MenuItem]
+    let ignoredItems: [IgnoredItem]
+    let modelContext: ModelContext
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            
+            
+            ForEach(ignoredItemList) { ignoredItem in
+                IgnoredItemRow(ignoredItem: ignoredItem, ignoredItems: ignoredItems, modelContext: modelContext)
+            }
+            
+            if ignoredItemList.isEmpty {
+                Text("No ignored apps")
+                    .foregroundColor(.secondary)
+                    .italic()
+            }
+        }
+    }
+}
+
+struct ShortcutsSection: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Shortcuts")
+                .font(.headline)
+            
+            KeyboardShortcuts.Recorder("Quit All", name: .quitMode)
+                .padding(.vertical, 4)
+            
+            KeyboardShortcuts.Recorder("Force Quit All", name: .forceQuitMode)
+                .padding(.vertical, 4)
+        }
+    }
+}
+
+struct IgnoredItemRow: View {
+    let ignoredItem: MenuItem
+    let ignoredItems: [IgnoredItem]
+    let modelContext: ModelContext
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            if let icon = ignoredItem.item.icon {
+                Image(nsImage: icon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+            } else {
+                Image(systemName: "app")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.secondary)
+            }
+            
+            Text(ignoredItem.item.localizedName ?? "Unknown")
+                .font(.system(size: 14))
+                .lineLimit(1)
+                .truncationMode(.tail)
+            
+            Spacer()
+        
+            Button(action: removeIgnoredItem) {
+                Image(systemName: "eye")
+                    .foregroundColor(.green)
+                    .frame(width: 25, height: 25)
+                    .background(Color.green.opacity(0.1))
+                    .clipShape(Circle())
+            }
+            .padding(.trailing, 15)
+            .buttonStyle(PlainButtonStyle())
+            .help("Remove Ignored Item")
+        }
+        .padding(.vertical, 4)
+    }
+    
+    private func removeIgnoredItem() {
+        do {
+            if let itemToDelete = ignoredItems.first(where: { $0.id == ignoredItem.id }) {
+                modelContext.delete(itemToDelete)
+                try modelContext.save()
+            }
+        } catch {
+            print("Error deleting ignored item: \(error.localizedDescription)")
+        }
+    }
+}
+
+struct PreferencesView_Previews: PreviewProvider {
+    static var previews: some View {
+        PreferencesView()
+            .environmentObject(AppDelegate())
+            .modelContainer(for: IgnoredItem.self)
+    }
 }
