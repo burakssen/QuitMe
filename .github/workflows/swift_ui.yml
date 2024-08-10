@@ -1,0 +1,48 @@
+name: macOS SwiftUI CI for QuitMe
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Xcode
+        uses: apple-actions/setup-xcode@v1
+        with:
+          xcode-version: '15.0'  # Replace with the Xcode version required for QuitMe
+
+      - name: Install Dependencies
+        run: swift package resolve
+
+      - name: Build QuitMe macOS App
+        run: |
+          xcodebuild -project QuitMe.xcodeproj \
+                     -scheme QuitMe \
+                     -sdk macosx \
+                     -destination 'platform=macOS' \
+                     -configuration Release \
+                     build SYMROOT=$(PWD)/build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: QuitMe-app
+          path: build/Release/QuitMe.app  # Update this path if necessary to match your actual build output
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/Release/QuitMe.app  # Ensure this matches the artifact path
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
