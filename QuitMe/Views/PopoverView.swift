@@ -8,42 +8,77 @@
 import SwiftUI
 
 struct PopoverView: View {
-    
     @Environment(\.openWindow) private var openWindow
-    @State var isHover:[Bool] = [false, false, false]
-    private var buttons: [(String, String, () -> ())] {
-        [
-            ("xmark.circle.fill", "Quit", {}),
-            ("gearshape", "Preferences", {self.openWindow(id: "preferences")}),
-            ("questionmark.circle", "Help", {self.openWindow(id: "help")})
-        ]
-    }
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        List([0, 1, 2], id:\.self) { row in
-            HStack{
-                Button {
-                    buttons[row].2()
-                } label: {
-                    Image(systemName: buttons[row].0)
-                        .scaledToFill()
-                    Text(buttons[row].1)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.all, 5)
+        VStack(spacing: 1) {
+            PopoverButton(
+                icon: "xmark.circle.fill",
+                title: "Quit",
+                action: {
+                    NSApplication.shared.terminate(nil)
+                    dismiss()
                 }
-                .padding(.horizontal, 5)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .buttonStyle(.bordered)
-                .onHover(perform: { hovering in
-                    isHover[row] = hovering
-                })
-            }
-            .listRowSeparator(.hidden)
+            )
+            
+            PopoverButton(
+                icon: "gearshape",
+                title: "Preferences",
+                action: {
+                    openWindow(id: "preferences")
+                    dismiss()
+                }
+            )
+            
+            PopoverButton(
+                icon: "questionmark.circle",
+                title: "Help",
+                action: {
+                    openWindow(id: "help")
+                    dismiss()
+                }
+            )
         }
-        .frame(maxWidth: .infinity)
+        .padding(.vertical, 1)
+        .frame(width: 250)
+        .background(Color(.windowBackgroundColor))
     }
 }
 
-#Preview {
-    PopoverView()
+struct PopoverButton: View {
+    let icon: String
+    let title: String
+    let action: () -> Void
+    
+    @State private var isHovered = false
+    
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                Image(systemName: icon)
+                    .font(.system(size: 14))
+                    .frame(width: 20)
+                Text(title)
+                    .font(.system(size: 14, weight: .medium))
+                Spacer()
+            }
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
+            .frame(maxWidth: .infinity)
+            .background(isHovered ? Color.secondary.opacity(0.2) : Color.clear)
+        }
+        .buttonStyle(PlainButtonStyle())
+        .onHover { hovering in
+            withAnimation(.easeInOut(duration: 0.2)) {
+                isHovered = hovering
+            }
+        }
+    }
+}
+
+struct PopoverView_Previews: PreviewProvider {
+    static var previews: some View {
+        PopoverView()
+    }
 }
