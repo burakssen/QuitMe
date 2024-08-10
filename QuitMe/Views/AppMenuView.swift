@@ -11,108 +11,183 @@ import SwiftData
 
 struct AppMenuView: View {
     @EnvironmentObject var appDelegate: AppDelegate
-    @State var selectAll: Bool = false
-    @State var settingsPopover: Bool = false
+    @State private var selectAll = false
+    @State private var showSettings = false
     
-    @Query(sort: \IgnoredItem.id) var ignoredItems: [IgnoredItem]
-    @Environment(\.modelContext) var modelContext
+    @Query(sort: \IgnoredItem.id) private var ignoredItems: [IgnoredItem]
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.openWindow) private var openWindow
 
-    var filteredMenuItems: [MenuItem] {
+    private var filteredMenuItems: [MenuItem] {
         appDelegate.menuItems.filter { menuItem in
-            !ignoredItems.contains(where: { $0.id == menuItem.id })
-        } 
+            !ignoredItems.contains { $0.id == menuItem.id }
+        }
     }
     
     var body: some View {
-        VStack (alignment: .leading){
-            HStack {
-                Button(action: self.TerminateSelected, label: {
-                    Text("Quit Selected")
-                        .padding(.vertical, 3)
-                        .frame(maxWidth: .infinity)
-                })
-                .buttonStyle(.borderedProminent)
-                .frame(maxWidth: .infinity)
-                Spacer()
-                Button(action: {
-                    self.settingsPopover.toggle()
-                }, label: {
-                    Image(systemName: "gear")
-                })
-                .buttonStyle(.borderless)
-                .imageScale(.large)
-                .popover(isPresented: self.$settingsPopover, arrowEdge: .bottom){
-                    PopoverView()
-                        .frame(width: 250)
-                        .padding(.all, 0)
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.top)
-            HStack {
-                Toggle(isOn: self.selectAllBinding()){}
-                    .onChange(of: selectAll){
-                        for index in appDelegate.menuItems.indices {
-                            appDelegate.checkedItems[appDelegate.menuItems[index]] = selectAll;
-                        }
-                    }
-                Text("Select All")
-            }
-            VStack(alignment: .leading, spacing: 2) {
-                ForEach(filteredMenuItems) { menuItem in
-                    HStack {
-                        Toggle(isOn: appDelegate.MenuItemBinding(for: menuItem)) {
-                            HStack {
-                                if (menuItem.item.icon != nil) {
-                                    Image(nsImage: menuItem.item.icon!)
-                                        .scaleEffect(CGSize(width: 0.7, height: 0.7))
-                                }
-                                Text(menuItem.item.localizedName ?? "Unknown")
-                            }
-                        }.toggleStyle(.checkbox)
-                        Spacer()
-                        Button(action: {
-                            let menuItemBinding = appDelegate.MenuItemBinding(for: menuItem)
-                            if menuItemBinding.wrappedValue == true {
-                                menuItemBinding.wrappedValue.toggle()
-                            }
-                            let ignoredItem = IgnoredItem(id: menuItem.id)
-                            self.modelContext.insert(ignoredItem)
-                        }, label: {Image(systemName: "plus.circle.fill")})
-                            .buttonStyle(.borderless)
-                            .imageScale(.large)
-                        Button(action: {
-                            menuItem.item.terminate()
-                        }, label: {Image(systemName: "bolt.horizontal.circle.fill")})
-                        .buttonStyle(.borderless)
-                        .imageScale(.large)
-                    }
-                }
-            }.padding(.bottom)
-            
+        VStack(alignment: .leading, spacing: 16) {
+            headerView
+            selectAllToggle
+            menuItemsList
         }
-        .padding(.horizontal)
-        .frame(maxWidth: 250)
+        .padding()
+        .frame(width: 320)
+        .background(Color(.windowBackgroundColor))
     }
     
-    func TerminateSelected() {
+    private var headerView: some View {
+        HStack {
+            quitSelectedButton
+            Spacer()
+            settingsButton
+        }
+    }
+
+    private var quitSelectedButton: some View {
+        Button(action: terminateSelected) {
+            HStack {
+                Image(systemName: "power")
+                    .font(.system(size: 14, weight: .semibold))
+                Text("Quit Selected")
+                    .font(.system(size: 14, weight: .semibold))
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            .frame(maxWidth: .infinity) // Make the button fill the available width
+            .background(Color.red)
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            
+        }
+        .buttonStyle(PlainButtonStyle())
+        .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 1)
+    }
+    
+    private var settingsButton: some View {
+        Button(action: { showSettings.toggle() }) {
+            Image(systemName: "gear")
+                .imageScale(.large)
+                .foregroundColor(.secondary)
+                .frame(width: 32, height: 32)
+                .background(Color.secondary.opacity(0.1))
+                .clipShape(Circle())
+        }
+        .buttonStyle(PlainButtonStyle())
+        .popover(isPresented: $showSettings, arrowEdge: .bottom) {
+            PopoverView()
+                .frame(width: 250)
+                .padding(0)
+        }
+    }
+    
+    private var selectAllToggle: some View {
+        HStack {
+            Text("Select All Applications")
+                .font(.system(size: 14, weight: .medium))
+                Spacer()
+            Toggle("", isOn: $selectAll)
+                .toggleStyle(
+                    SwitchToggleStyle(tint: .accentColor)
+                )
+                .scaleEffect(0.8)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(Color.secondary.opacity(0.1))
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .onChange(of: selectAll) { _, newValue in
+            for menuItem in appDelegate.menuItems {
+                if ignoredItems.contains(where: { $0.id == menuItem.id }) {
+                    appDelegate.checkedItems[menuItem] = false
+                } else {
+                    appDelegate.checkedItems[menuItem] = newValue
+                }
+            }
+        }
+    }
+    private var menuItemsList: some View {
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 12) {
+                ForEach(filteredMenuItems) { menuItem in
+                    MenuItemRow(menuItem: menuItem)
+                }
+            }
+        }
+    }
+    
+    private func terminateSelected() {
         for menuItem in appDelegate.selectedItems {
             menuItem.item.terminate()
         }
     }
+}
+
+struct MenuItemRow: View {
+    @EnvironmentObject var appDelegate: AppDelegate
+    @Environment(\.modelContext) private var modelContext
+    let menuItem: MenuItem
     
-    func selectAllBinding()  -> Binding<Bool> {
-        return Binding(get: {
-            self.selectAll
-        }, set: {selectVal in
-            self.selectAll = selectVal
-        })
+    var body: some View {
+        HStack(spacing: 12) {
+            Toggle("", isOn: appDelegate.MenuItemBinding(for: menuItem))
+                .toggleStyle(SwitchToggleStyle(tint: .accentColor))
+            
+            if let icon = menuItem.item.icon {
+                Image(nsImage: icon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 32, height: 32)
+            } else {
+                Image(systemName: "app")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 32, height: 32)
+                    .foregroundColor(.secondary)
+            }
+            
+            Text(menuItem.item.localizedName ?? "Unknown")
+                .lineLimit(1)
+                .truncationMode(.tail)
+            
+            Spacer()
+            
+            HStack(spacing: 8) {
+                Button(action: ignoreItem) {
+                    Image(systemName: "eye.slash")
+                        .foregroundColor(.blue)
+                        .frame(width: 30, height: 30)
+                        .background(Color.blue.opacity(0.1))
+                        .clipShape(Circle())
+                }
+                .buttonStyle(PlainButtonStyle())
+                .help("Ignore this app")
+                
+                Button(action: { menuItem.item.terminate() }) {
+                    Image(systemName: "xmark.circle")
+                        .foregroundColor(.red)
+                        .frame(width: 30, height: 30)
+                        .background(Color.red.opacity(0.1))
+                        .clipShape(Circle())
+                }
+                .buttonStyle(PlainButtonStyle())
+                .help("Terminate this app")
+            }
+        }
+        .padding(.vertical, 4)
+    }
+    
+    private func ignoreItem() {
+        let menuItemBinding = appDelegate.MenuItemBinding(for: menuItem)
+        if menuItemBinding.wrappedValue {
+            menuItemBinding.wrappedValue.toggle()
+        }
+        let ignoredItem = IgnoredItem(id: menuItem.id)
+        modelContext.insert(ignoredItem)
     }
 }
 
-
 #Preview {
-    AppMenuView().environmentObject(AppDelegate())
+    AppMenuView()
+        .environmentObject(AppDelegate())
         .modelContainer(for: IgnoredItem.self)
 }
