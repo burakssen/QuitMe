@@ -18,7 +18,7 @@ QuitMe is a simple application that allows you to quit any application on macOS.
 - [ ] Default quit option for applications
 - [ ] Support for multiple languages
 - [ ] Quit unused applications automatically after a certain period of time (add user confirmation before quitting this is optional)
-- [ ] Maybe make a separate settings window instead of using a popover
+- [x] Maybe make a separate settings window instead of using a popover
 
 ## Installation
 
@@ -30,9 +30,13 @@ The application is very simple to use. You can select the applications you want 
 
 ![QuitMe](./images/app.png)
 
+![QuitMe](./images/popover.png)
+
 There is also ignore list that you can add applications to. These applications will not be shown in the list of applications to quit and will not be quit when you click `Quit Selected` while they are running.
 
-![QuitMe](./images/ignored.png)
+You can also set a shortcut to quit applications. Click on the `Set Shortcut` button and press the keys you want to use as a shortcut.
+
+![QuitMe](./images/preferences.png)
 
 If you want the application to start at login, you can check the `Launch at Login` checkbox as well.
 
