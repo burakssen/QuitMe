@@ -119,6 +119,7 @@ struct AppMenuView: View {
         for menuItem in appDelegate.selectedItems {
             menuItem.item.terminate()
         }
+        selectAll.toggle()
     }
 }
 
