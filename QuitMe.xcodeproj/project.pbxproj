@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA38FE7E2C0121C400EF5375 /* IgnoredItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38FE7D2C0121C400EF5375 /* IgnoredItem.swift */; };
 		EA38FE7C2C0121C400EF5375 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38FE7B2C0121C400EF5375 /* AppDelegate.swift */; };
 		EA3A63172C040449000BDB93 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = EA3A63162C040449000BDB93 /* KeyboardShortcuts */; };
 		EA3A63192C04046F000BDB93 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A63182C04046F000BDB93 /* Constants.swift */; };
@@ -19,7 +20,7 @@
 		EA6CAFA72C00CC5A00856697 /* QuitMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAFA62C00CC5A00856697 /* QuitMeUITests.swift */; };
 		EA6CAFA92C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAFA82C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift */; };
 		EA6CAFB62C00CCE300856697 /* AppMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6CAFB52C00CCE300856697 /* AppMenuView.swift */; };
-		EAF1119E2C015D1F003DB248 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1119D2C015D1F003DB248 /* SettingsView.swift */; };
+		EAF1119E2C015D1F003DB248 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1119D2C015D1F003DB248 /* PreferencesView.swift */; };
 		EAF265E22C0212590009269C /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = EAF265E12C0212590009269C /* LaunchAtLogin */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA38FE7D2C0121C400EF5375 /* IgnoredItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgnoredItem.swift; sourceTree = "<group>"; };
 		EA38FE7B2C0121C400EF5375 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA3A63182C04046F000BDB93 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EA3A631C2C0407E9000BDB93 /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 		EA6CAFA62C00CC5A00856697 /* QuitMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitMeUITests.swift; sourceTree = "<group>"; };
 		EA6CAFA82C00CC5A00856697 /* QuitMeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitMeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EA6CAFB52C00CCE300856697 /* AppMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenuView.swift; sourceTree = "<group>"; };
-		EAF1119D2C015D1F003DB248 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		EAF1119D2C015D1F003DB248 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,11 +88,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA3A631E2C040512000BDB93 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EA38FE7D2C0121C400EF5375 /* IgnoredItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		EA3A631A2C040502000BDB93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				EA6CAFB52C00CCE300856697 /* AppMenuView.swift */,
-				EAF1119D2C015D1F003DB248 /* SettingsView.swift */,
+				EAF1119D2C015D1F003DB248 /* PreferencesView.swift */,
 				EA3A631C2C0407E9000BDB93 /* PopoverView.swift */,
 				EA62EE972C0670A600CDEF4C /* HelpView.swift */,
 			);
@@ -128,6 +138,7 @@
 		EA6CAF892C00CC5900856697 /* QuitMe */ = {
 			isa = PBXGroup;
 			children = (
+				EA3A631E2C040512000BDB93 /* Models */,
 				EA3A631B2C040512000BDB93 /* Delegates */,
 				EA3A631A2C040502000BDB93 /* Views */,
 				EA6CAF8A2C00CC5900856697 /* QuitMeApp.swift */,
@@ -302,11 +313,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA38FE7E2C0121C400EF5375 /* IgnoredItem.swift in Sources */,
 				EA3A631D2C0407E9000BDB93 /* PopoverView.swift in Sources */,
 				EA3A63192C04046F000BDB93 /* Constants.swift in Sources */,
 				EA38FE7C2C0121C400EF5375 /* AppDelegate.swift in Sources */,
 				EA62EE982C0670A600CDEF4C /* HelpView.swift in Sources */,
-				EAF1119E2C015D1F003DB248 /* SettingsView.swift in Sources */,
+				EAF1119E2C015D1F003DB248 /* PreferencesView.swift in Sources */,
 				EA6CAFB62C00CCE300856697 /* AppMenuView.swift in Sources */,
 				EA6CAF8B2C00CC5900856697 /* QuitMeApp.swift in Sources */,
 			);
@@ -470,12 +482,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = QuitMe/QuitMe.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"QuitMe/Preview Content\"";
-				DEVELOPMENT_TEAM = 66Z4557953;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -502,12 +510,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = QuitMe/QuitMe.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"QuitMe/Preview Content\"";
-				DEVELOPMENT_TEAM = 66Z4557953;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

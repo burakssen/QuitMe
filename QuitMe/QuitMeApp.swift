@@ -12,25 +12,42 @@ import SwiftData
 struct QuitMeApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    private let container: ModelContainer
+    
+    init() {
+        do {
+            container = try ModelContainer(for: IgnoredItem.self)
+            // Accessing appDelegate here might be tricky, but it's an adaptor.
+            // We'll set it in the body to be safe, but also try to ensure it's available.
+        } catch {
+            fatalError("Failed to initialize ModelContainer: \(error)")
+        }
+    }
+    
     var body: some Scene {
         MenuBarExtra {
             AppMenuView()
                 .environmentObject(appDelegate)
-                .modelContainer(for: IgnoredItem.self)
+                .modelContainer(container)
         } label: {
             Image(systemName: "q.square")
         }
         .menuBarExtraStyle(.window)
-        .modelContainer(for: IgnoredItem.self)
         
         WindowGroup(id: "preferences") {
             PreferencesView()
                 .environmentObject(appDelegate)
-                .modelContainer(for: IgnoredItem.self)
+                .modelContainer(container)
                 .frame(maxWidth: 300)
-        }.windowResizability(.contentSize)
+        }
+        .windowResizability(.contentSize)
+        .onChange(of: true, initial: true) { _, _ in
+            appDelegate.container = container
+        }
+
         WindowGroup(id: "help") {
             HelpView()
-        }.windowResizability(.contentSize)
+        }
+        .windowResizability(.contentSize)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  SettingsView.swift
+//  PreferencesView.swift
 //  QuitMe
 //
 //  Created by burak şen on 25.05.24.
@@ -15,25 +15,18 @@ struct PreferencesView: View {
     @Environment(\.modelContext) var modelContext
     @Query(sort: \IgnoredItem.id) var ignoredItems: [IgnoredItem]
     
-    var ignoredItemList: [MenuItem] {
-        appDelegate.menuItems.filter { menuItem in
-            ignoredItems.contains { $0.id == menuItem.id }
-        }
-    }
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("Preferences")
                 .font(.title2)
                 .fontWeight(.bold)
             
-            // Scrollable Ignored Apps Section
             Text("Ignored Apps")
                 .font(.headline)
             ScrollView {
-                IgnoredAppsSection(ignoredItemList: ignoredItemList, ignoredItems: ignoredItems, modelContext: modelContext)
+                IgnoredAppsSection(ignoredItems: ignoredItems, modelContext: modelContext)
             }
-            .frame(maxHeight: 500) // Adjust height as needed
+            .frame(maxHeight: 500)
             
             Divider()
             
@@ -53,19 +46,16 @@ struct PreferencesView: View {
 }
 
 struct IgnoredAppsSection: View {
-    let ignoredItemList: [MenuItem]
     let ignoredItems: [IgnoredItem]
     let modelContext: ModelContext
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            
-            
-            ForEach(ignoredItemList) { ignoredItem in
-                IgnoredItemRow(ignoredItem: ignoredItem, ignoredItems: ignoredItems, modelContext: modelContext)
+            ForEach(ignoredItems) { ignoredItem in
+                IgnoredItemRow(ignoredItem: ignoredItem, modelContext: modelContext)
             }
             
-            if ignoredItemList.isEmpty {
+            if ignoredItems.isEmpty {
                 Text("No ignored apps")
                     .foregroundColor(.secondary)
                     .italic()
@@ -90,13 +80,26 @@ struct ShortcutsSection: View {
 }
 
 struct IgnoredItemRow: View {
-    let ignoredItem: MenuItem
-    let ignoredItems: [IgnoredItem]
+    let ignoredItem: IgnoredItem
     let modelContext: ModelContext
+    
+    private var appName: String {
+        if let bundleURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: ignoredItem.id) {
+            return (try? bundleURL.resourceValues(forKeys: [.localizedNameKey]).localizedName) ?? ignoredItem.id
+        }
+        return ignoredItem.id
+    }
+    
+    private var appIcon: NSImage? {
+        if let bundleURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: ignoredItem.id) {
+            return NSWorkspace.shared.icon(forFile: bundleURL.path)
+        }
+        return nil
+    }
     
     var body: some View {
         HStack(spacing: 12) {
-            if let icon = ignoredItem.item.icon {
+            if let icon = appIcon {
                 Image(nsImage: icon)
                     .resizable()
                     .scaledToFit()
@@ -109,7 +112,7 @@ struct IgnoredItemRow: View {
                     .foregroundColor(.secondary)
             }
             
-            Text(ignoredItem.item.localizedName ?? "Unknown")
+            Text(appName)
                 .font(.system(size: 14))
                 .lineLimit(1)
                 .truncationMode(.tail)
@@ -131,14 +134,8 @@ struct IgnoredItemRow: View {
     }
     
     private func removeIgnoredItem() {
-        do {
-            if let itemToDelete = ignoredItems.first(where: { $0.id == ignoredItem.id }) {
-                modelContext.delete(itemToDelete)
-                try modelContext.save()
-            }
-        } catch {
-            print("Error deleting ignored item: \(error.localizedDescription)")
-        }
+        modelContext.delete(ignoredItem)
+        try? modelContext.save()
     }
 }
 
