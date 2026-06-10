@@ -45,7 +45,7 @@ struct AppMenuView: View {
             menuItemsList
         }
         .padding()
-        .frame(width: 320)
+        .frame(width: 320, height: 450)
         .background(Color(.windowBackgroundColor))
     }
     
@@ -139,6 +139,7 @@ struct AppMenuView: View {
                 }
             }
         }
+        .frame(maxHeight: .infinity)
     }
     
     private func terminateSelected() {
