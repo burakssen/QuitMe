@@ -22,10 +22,10 @@ QuitMe is a simple application that allows you to quit any application on macOS.
 
 ## Installation
 
-You can use my personal tap burakssen/casks
+You can use my personal tap burakssen/cask
 
 ```bash
-brew install --cask burakssen/casks/quitme
+brew install --cask burakssen/cask/quitme
 ```
 
 ## Usage
